@@ -24,6 +24,8 @@ export const searchCompanyInfo = async (company: string, period?: string): Promi
         }
 
         prompt += ` La búsqueda debe enfocarse en noticias, opiniones de usuarios, promociones y cualquier controversia o evento importante relacionado con "${company}" en el país.`;
+        prompt += ` Organiza la respuesta de la siguiente manera: primero, un resumen general en párrafos. Luego, bajo un encabezado "## Datos Clave", lista los puntos más importantes, como fechas, cifras, estadísticas o promociones relevantes, usando viñetas (con '*' o '-').`;
+
 
         const response = await ai.models.generateContent({
             model: "gemini-2.5-flash",
