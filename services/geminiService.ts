@@ -9,21 +9,21 @@ const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const searchCompanyInfo = async (company: string, period?: string): Promise<SearchResult> => {
     try {
-        let prompt = `Realiza una búsqueda exhaustiva sobre la compañía de transporte "${company}" en República Dominicana.`;
+        let prompt = `Utilizando ÚNICA Y EXCLUSIVAMENTE fuentes de noticias y sitios web de la República Dominicana, realiza una búsqueda exhaustiva sobre la compañía de transporte "${company}".`;
 
         switch (period) {
             case 'today':
-                prompt += ' Limita los resultados estrictamente a información publicada HOY.';
+                prompt += ' La búsqueda debe limitarse estrictamente a información publicada HOY.';
                 break;
             case 'week':
-                prompt += ' Limita los resultados estrictamente a información publicada ESTA SEMANA.';
+                prompt += ' La búsqueda debe limitarse estrictamente a información publicada DURANTE ESTA SEMANA.';
                 break;
             case 'month':
-                prompt += ' Limita los resultados estrictamente a información publicada ESTE MES EN CURSO.';
+                prompt += ' La búsqueda debe limitarse estrictamente a información publicada DURANTE ESTE MES EN CURSO.';
                 break;
         }
 
-        prompt += ` Enfócate en noticias, opiniones de usuarios, promociones y cualquier controversia o evento importante. Es crucial que TODAS las fuentes de información sean de la República Dominicana.`;
+        prompt += ` La búsqueda debe enfocarse en noticias, opiniones de usuarios, promociones y cualquier controversia o evento importante relacionado con "${company}" en el país.`;
 
         const response = await ai.models.generateContent({
             model: "gemini-2.5-flash",
