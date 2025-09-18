@@ -1,0 +1,5 @@
+{
+  "name": "Buscador de Empresas de Transporte",
+  "description": "Una aplicación para buscar información sobre Uber, Didi e inDrive en la República Dominicana utilizando la API de Gemini con búsqueda de Google.",
+  "requestFramePermissions": []
+}
